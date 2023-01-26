@@ -11,6 +11,7 @@ router.post('/', (req, res) => {
         let file = files[key];
         let inputBuffer = file.data
         sharp(inputBuffer).toFormat('jpg').toFile('./test.jpg').then(info => {
+           console.log(path.basename(path.dirname('test.jpg')) + '/test.jpg')
             const renderedFile = path.basename(path.dirname('test.jpg')) + '/test.jpg';
             res.download(renderedFile, function (err) {
                 if (err) {
